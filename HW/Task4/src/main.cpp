@@ -1,30 +1,33 @@
 #include <iostream>
 #include <fstream>
+
 using namespace std;
-int main(){
-    char pattern[7] = {'-', '1', '1', '9', 'P', 'N', 'G'};
-    string path = "OG.png";
-    // cout << "Enter the path of the file: ";
-    // cin >> path;
 
+int main() {
+    string file_path;
+    cout << "Enter the path to the file: ";
+    getline(cin, file_path);
+    
 
-    ifstream file;
-    file.open(path, ios::binary);
-    if (!file.is_open()){
-        cout << "Invalid file path!";
+    ifstream file(file_path, ios::binary);
+    
+    if (!file) {
+        cout << "Invalid file path!" << endl;
         return 1;
     }
 
-    if(path.substr(path.length() - 4, 3) != "png"){
-        cout << "This is not a .png file" << endl;
-        return 0;
+    char header[8];
+    file.read(header, 8);
+
+    // Проверяем, что заголовок соответствует PNG
+    if (header[0] == -119 && 
+        header[1] == 'P' && 
+        header[2] == 'N' && 
+        header[3] == 'G') {
+        cout << "This is a png file" << endl;
+    } else {
+        cout << "This is not a png file" << endl;
     }
-    char binaryCode[7];
-    file.read(binaryCode, 7);
 
-    if(binaryCode == pattern) cout << "This is a .png file" << endl;
-    else cout << "This is not a.png file" << endl;
-
-    file.close();
     return 0;
 }
