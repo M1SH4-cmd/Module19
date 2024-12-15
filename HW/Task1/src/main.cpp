@@ -5,7 +5,7 @@ using namespace std;
 int main(){
 
     ifstream words;
-    words.open("words.txt");
+    words.open("..\\words.txt");
 
     cout << "Enter your word to find:" << endl;
     string wordToFind;
