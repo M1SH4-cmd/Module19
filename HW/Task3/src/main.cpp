@@ -10,7 +10,7 @@ int main(){
     string monthEmployee;
 
     ifstream employeesList;
-    employeesList.open("list.txt");
+    employeesList.open("..\\list.txt");
 
     vector<string> buffer;
 
