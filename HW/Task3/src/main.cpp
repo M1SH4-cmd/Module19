@@ -24,7 +24,7 @@ int main(){
         istringstream iss(buffer[i]);
         string name;
         string scndName;
-        double payment;
+        int payment;
         iss >> name >> scndName >> payment;
         sum += payment;
         if(payment > maxPayment){
