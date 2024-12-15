@@ -3,15 +3,14 @@
 
 using namespace std;
 
-int main() {
+int main(){
     string file_path;
     cout << "Enter the path to the file: ";
     getline(cin, file_path);
-    
 
     ifstream file(file_path, ios::binary);
     
-    if (!file) {
+    if(!file){
         cout << "Invalid file path!" << endl;
         return 1;
     }
@@ -19,13 +18,12 @@ int main() {
     char header[8];
     file.read(header, 8);
 
-    // Проверяем, что заголовок соответствует PNG
-    if (header[0] == -119 && 
+    if(header[0] == -119 && 
         header[1] == 'P' && 
         header[2] == 'N' && 
-        header[3] == 'G') {
+        header[3] == 'G'){
         cout << "This is a png file" << endl;
-    } else {
+    }else{
         cout << "This is not a png file" << endl;
     }
 
